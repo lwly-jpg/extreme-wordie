@@ -19,6 +19,10 @@ const Keyboard = () => {
 
   const handleReturn = (event) => {
     event.preventDefault();
+    if (round > 4) {
+      console.log("Game is over")
+      return;
+    } 
 
     if (currentAttempt.length !== 6) {
       return;
