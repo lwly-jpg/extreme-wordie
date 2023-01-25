@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { GameContext } from "../Game/Game";
 
 const Keyboard = () => {
-  const { currentAttempt, setCurrentAttempt, setAttempts } = useContext(GameContext);
+  const { currentAttempt, setCurrentAttempt, setAttempts, round, setRound } = useContext(GameContext);
   const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const thirdRow = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -14,16 +14,22 @@ const Keyboard = () => {
     console.log(currentAttempt);
   };
 
-  const handleReturn = () => {
+  const handleReturn = (event) => {
+    event.preventDefault();
+
     if (currentAttempt.length !== 6) {
       return
     }
-    
+
     setAttempts(prevAttempts => {
       let attempts = [...prevAttempts];
-      attempts[0] = currentAttempt;
+      attempts[round] = currentAttempt;
+      console.log(round)
       return attempts;
   })
+
+    setRound((prevRound) => {return prevRound + 1});
+    setCurrentAttempt("");
     
   }
 
