@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Nav from "./components/Nav/Nav";
+import Game from "./components/Game/Game";
 
 function App() {
   const [randomWord, setRandomWord] = useState();
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
+      <Game />
     </div>
   );
 }
