@@ -15,6 +15,10 @@ const Keyboard = () => {
   };
 
   const handleReturn = () => {
+    if (currentAttempt.length !== 6) {
+      return
+    }
+    
     setAttempts(prevAttempts => {
       let attempts = [...prevAttempts];
       attempts[0] = currentAttempt;
