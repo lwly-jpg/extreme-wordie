@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px #ede8e8 solid;
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: 600;
+}
