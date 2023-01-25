@@ -3,14 +3,17 @@ import { useContext } from "react";
 import { GameContext } from "../Game/Game";
 
 const Keyboard = () => {
-  const { currentAttempt, setCurrentAttempt, setAttempts, round, setRound } = useContext(GameContext);
+  const { currentAttempt, setCurrentAttempt, setAttempts, round, setRound } =
+    useContext(GameContext);
   const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const thirdRow = ["Z", "X", "C", "V", "B", "N", "M"];
 
   const handleKeyClick = (letter) => {
-    setCurrentAttempt(prev =>
-      (prev + letter))
+    if (currentAttempt.length === 6) {
+      return;
+    }
+    setCurrentAttempt((prev) => prev + letter);
     console.log(currentAttempt);
   };
 
@@ -18,20 +21,21 @@ const Keyboard = () => {
     event.preventDefault();
 
     if (currentAttempt.length !== 6) {
-      return
+      return;
     }
 
-    setAttempts(prevAttempts => {
+    setAttempts((prevAttempts) => {
       let attempts = [...prevAttempts];
       attempts[round] = currentAttempt;
-      console.log(round)
+      console.log(round);
       return attempts;
-  })
+    });
 
-    setRound((prevRound) => {return prevRound + 1});
+    setRound((prevRound) => {
+      return prevRound + 1;
+    });
     setCurrentAttempt("");
-    
-  }
+  };
 
   return (
     <div className={styles.keyboard}>
@@ -68,7 +72,9 @@ const Keyboard = () => {
             {letter}
           </div>
         ))}
-        <div className={styles.keyboard_letter} onClick={handleReturn}>&#x23CE;</div>
+        <div className={styles.keyboard_letter} onClick={handleReturn}>
+          &#x23CE;
+        </div>
       </div>
     </div>
   );
