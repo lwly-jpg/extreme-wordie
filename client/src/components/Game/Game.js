@@ -8,9 +8,13 @@ const Game = () => {
   const [attempts, setAttempts] = useState([...Array(5)]);
   const [currentAttempt, setCurrentAttempt] = useState("");
 
+  console.log(attempts)
+
   return (
     <>
-      <GameContext.Provider value={{ attempts, currentAttempt, setCurrentAttempt }}>
+      <GameContext.Provider
+        value={{ attempts, currentAttempt, setCurrentAttempt, setAttempts }}
+      >
         <Board />
         <Keyboard />
       </GameContext.Provider>
