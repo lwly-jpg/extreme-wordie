@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import styles from "./Game.module.css";
+import Board from "../Board/Board";
 import Keyboard from "../Keyboard/Keyboard";
 
+export const GameContext = createContext();
 
 const Game = () => {
   const [attempts, setAttempts] = useState([...Array(5)]);
@@ -9,19 +11,12 @@ const Game = () => {
 
   return (
     <>
-      {attempts.map(() => (
-        <div className={styles.row}>
-          <div className={styles.letter}>{currentAttempt[0]}</div>
-          <div className={styles.letter}>{currentAttempt[1]}</div>
-          <div className={styles.letter}>{currentAttempt[2]}</div>
-          <div className={styles.letter}>{currentAttempt[3]}</div>
-          <div className={styles.letter}>{currentAttempt[4]}</div>
-          <div className={styles.letter}>{currentAttempt[5]}</div>
-        </div>
-      ))}
-      <Keyboard />
+      <GameContext.Provider value={{ attempts, currentAttempt }}>
+        <Board />
+        <Keyboard />
+      </GameContext.Provider>
     </>
-  )
+  );
 };
 
 export default Game;
