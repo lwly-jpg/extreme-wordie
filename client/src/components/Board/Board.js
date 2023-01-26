@@ -1,6 +1,7 @@
 import styles from "./Board.module.css";
 import { useContext } from "react";
 import { GameContext } from "../Game/Game";
+import Row from "./Row";
 
 const Board = () => {
   const {attempts} = useContext(GameContext);
@@ -8,14 +9,7 @@ const Board = () => {
   return (
     <>
       {attempts.map((attempt) => (
-        <div className={styles.row}>
-          <div className={styles.letter}>{attempt[0].letter}</div>
-          <div className={styles.letter}>{attempt[1].letter}</div>
-          <div className={styles.letter}>{attempt[2].letter}</div>
-          <div className={styles.letter}>{attempt[3].letter}</div>
-          <div className={styles.letter}>{attempt[4].letter}</div>
-          <div className={styles.letter}>{attempt[5].letter}</div>
-        </div>
+        <Row attempt={attempt} />
       ))}
     </>
   );
