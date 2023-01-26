@@ -3,8 +3,15 @@ import { useContext } from "react";
 import { GameContext } from "../Game/Game";
 
 const Keyboard = () => {
-  const { currentAttempt, setCurrentAttempt, attempts, setAttempts, round, setRound, todaysWord } =
-    useContext(GameContext);
+  const {
+    currentAttempt,
+    setCurrentAttempt,
+    attempts,
+    setAttempts,
+    round,
+    setRound,
+    todaysWord,
+  } = useContext(GameContext);
   const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const thirdRow = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -19,9 +26,9 @@ const Keyboard = () => {
   const handleReturn = (event) => {
     event.preventDefault();
     if (round > 4) {
-      console.log("Game is over")
+      console.log("Game is over");
       return;
-    } 
+    }
 
     if (currentAttempt.length !== 6) {
       return;
@@ -29,26 +36,20 @@ const Keyboard = () => {
 
     setAttempts((prevAttempts) => {
       let newAttempts = [...prevAttempts];
-      
 
       const formattedAttempt = [...currentAttempt].map((letter, index) => {
         if (letter.toLowerCase() === todaysWord[index]) {
-          return {letter: letter, colour: "correct"}
+          return { letter: letter, result: "correct" };
         } else if ([...todaysWord].includes(letter.toLowerCase())) {
-          return {letter: letter, colour: "almost"}
+          return { letter: letter, result: "almost" };
         } else {
-          return {letter: letter, colour: "incorrect"}
+          return { letter: letter, result: "incorrect" };
         }
-      })
-
-      console.log(formattedAttempt)
-
+      });
 
       newAttempts[round] = formattedAttempt;
       return newAttempts;
     });
-
-    // console.log(attempts)
 
     setCurrentAttempt("");
 
