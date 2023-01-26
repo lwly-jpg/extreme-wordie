@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { GameContext } from "../Game/Game";
 
 const Keyboard = () => {
-  const { currentAttempt, setCurrentAttempt, setAttempts, round, setRound } =
+  const { currentAttempt, setCurrentAttempt, attempts, setAttempts, round, setRound, todaysWord } =
     useContext(GameContext);
   const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -14,7 +14,6 @@ const Keyboard = () => {
       return;
     }
     setCurrentAttempt((prev) => prev + letter);
-    console.log(currentAttempt);
   };
 
   const handleReturn = (event) => {
@@ -29,16 +28,29 @@ const Keyboard = () => {
     }
 
     setAttempts((prevAttempts) => {
-      let attempts = [...prevAttempts];
-      attempts[round] = currentAttempt;
-      console.log(round);
-      return attempts;
+      let newAttempts = [...prevAttempts];
+      
+
+      const formattedAttempt = [...currentAttempt].map((letter, index) => {
+        if (letter.toLowerCase() === todaysWord[index]) {
+          return {letter: letter, colour: "correct"}
+        }
+      })
+
+      console.log(formattedAttempt)
+
+
+      newAttempts[round] = formattedAttempt;
+      return newAttempts;
     });
+
+    // console.log(attempts)
+
+    setCurrentAttempt("");
 
     setRound((prevRound) => {
       return prevRound + 1;
     });
-    setCurrentAttempt("");
   };
 
   return (

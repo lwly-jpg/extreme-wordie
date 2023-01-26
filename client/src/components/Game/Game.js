@@ -4,12 +4,10 @@ import Keyboard from "../Keyboard/Keyboard";
 
 export const GameContext = createContext();
 
-const Game = () => {
+const Game = ({todaysWord}) => {
   const [attempts, setAttempts] = useState([...Array(5)]);
   const [currentAttempt, setCurrentAttempt] = useState("");
   const [round, setRound] = useState(0);
-
-  console.log(attempts);
 
   return (
     <>
@@ -20,7 +18,8 @@ const Game = () => {
           round,
           setCurrentAttempt,
           setAttempts,
-          setRound
+          setRound,
+          todaysWord
         }}
       >
         <Board />
