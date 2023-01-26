@@ -34,7 +34,9 @@ const Keyboard = () => {
       const formattedAttempt = [...currentAttempt].map((letter, index) => {
         if (letter.toLowerCase() === todaysWord[index]) {
           return {letter: letter, colour: "correct"}
-        }
+        } else if ([...todaysWord].includes(letter.toLowerCase())) {
+          return {letter: letter, colour: "almost"}
+        } 
       })
 
       console.log(formattedAttempt)
