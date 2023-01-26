@@ -3,18 +3,18 @@ import Nav from "./components/Nav/Nav";
 import Game from "./components/Game/Game";
 
 function App() {
-  const [randomWord, setRandomWord] = useState();
+  const [todaysWord, setTodaysWord] = useState();
 
   useEffect(() => {
-    fetch("https://extreme-wordie.onrender.com/words/random")
+    fetch("https://extreme-wordie.onrender.com/words/today")
       .then((response) => response.json())
-      .then((data) => setRandomWord(data.word));
+      .then((data) => setTodaysWord(data.word));
   }, []);
 
   return (
     <div className="App">
       <Nav />
-      <Game />
+      <Game todaysWord={todaysWord} />
     </div>
   );
 }
