@@ -10,6 +10,7 @@ const Game = ({todaysWord}) => {
   const [attempts, setAttempts] = useState([...Array(5)].fill([...Array(6)].fill({letter: "", result: null})));
   const [currentAttempt, setCurrentAttempt] = useState("");
   const [round, setRound] = useState(0);
+  const [modal, setModal] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -21,12 +22,13 @@ const Game = ({todaysWord}) => {
           setCurrentAttempt,
           setAttempts,
           setRound,
-          todaysWord
+          todaysWord,
+          setModal
         }}
       >
         <Board />
         <Keyboard />
-        <Modal />
+        {modal && <Modal />}
       </GameContext.Provider>
     </div>
   );
