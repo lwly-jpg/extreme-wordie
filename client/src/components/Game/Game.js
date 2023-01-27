@@ -21,7 +21,7 @@ const Game = ({todaysWord}) => {
     if (win) {
       setModal(true);
     }
-  }, [round])
+  }, [win, round])
 
   return (
     <div className={styles.container}>
@@ -39,7 +39,7 @@ const Game = ({todaysWord}) => {
       >
         <Board />
         <Keyboard />
-        {modal && <Modal />}
+        {modal && <Modal win={win} />}
       </GameContext.Provider>
     </div>
   );
