@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 import styles from "./Game.module.css";
 import Board from "../Board/Board";
 import Keyboard from "../Keyboard/Keyboard";
+import Modal from "../Modal/Modal"
 
 export const GameContext = createContext();
 
@@ -25,6 +26,7 @@ const Game = ({todaysWord}) => {
       >
         <Board />
         <Keyboard />
+        <Modal />
       </GameContext.Provider>
     </div>
   );
