@@ -29,8 +29,14 @@
   font-size: 3em;
 }
 
-.word {
+.answer {
   font-size: 2em;
+}
+
+.word {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px; 
 }
 
 .text {
