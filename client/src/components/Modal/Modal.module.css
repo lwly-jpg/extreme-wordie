@@ -1,0 +1,45 @@
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000e6;
+}
+
+.popup {
+  height: 60%;
+  width: 60%;
+  padding: 10%;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.win {
+  color: #066d3f;
+  font-size: 3em;
+}
+
+.loss {
+  color: #cf8a00;
+  font-size: 3em;
+}
+
+.answer {
+  font-size: 2em;
+}
+
+.word {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px; 
+}
+
+.text {
+  font-size: 2em;
+}
+
