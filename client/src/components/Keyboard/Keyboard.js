@@ -23,6 +23,8 @@ const Keyboard = () => {
     setCurrentAttempt((prev) => prev + letter);
   };
 
+  console.log(attempts)
+
   const handleReturn = (event) => {
     event.preventDefault();
     if (round > 4) {

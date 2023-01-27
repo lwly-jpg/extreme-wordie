@@ -4,12 +4,14 @@ import { GameContext } from "../Game/Game";
 import Row from "./Row";
 
 const Board = () => {
-  const {attempts} = useContext(GameContext);
+  const { attempts, round, currentAttempt } = useContext(GameContext);
 
   return (
     <>
-      {attempts.map((attempt) => (
-        <Row attempt={attempt} />
+      {attempts.map((attempt, index) => (
+        index === round ? 
+        <Row key={index} currentAttempt={currentAttempt} /> :
+        <Row key={index} attempt={attempt} />
       ))}
     </>
   );

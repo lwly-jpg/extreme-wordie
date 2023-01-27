@@ -9,8 +9,6 @@ const Game = ({todaysWord}) => {
   const [currentAttempt, setCurrentAttempt] = useState("");
   const [round, setRound] = useState(0);
 
-  console.log(attempts)
-
   return (
     <>
       <GameContext.Provider
