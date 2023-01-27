@@ -6,12 +6,12 @@ const Keyboard = () => {
   const {
     currentAttempt,
     setCurrentAttempt,
-    attempts,
     setAttempts,
     round,
     setRound,
     todaysWord,
   } = useContext(GameContext);
+
   const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const thirdRow = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -21,6 +21,12 @@ const Keyboard = () => {
       return;
     }
     setCurrentAttempt((prev) => prev + letter);
+  };
+
+  const handleBackspace = (event) => {
+    event.preventDefault();
+
+    setCurrentAttempt((prev) => prev.slice(0, -1));
   };
 
   const handleReturn = (event) => {
@@ -83,7 +89,7 @@ const Keyboard = () => {
         ))}
       </div>
       <div className={styles.keyboard_row}>
-        <div className={styles.keyboard_letter}>&#x232B;</div>
+        <div className={styles.keyboard_letter} onClick={handleBackspace}>&#x232B;</div>
         {thirdRow.map((letter) => (
           <div
             key={letter}
