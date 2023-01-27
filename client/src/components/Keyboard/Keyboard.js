@@ -10,7 +10,7 @@ const Keyboard = () => {
     setCurrentAttempt,
     setAttempts,
     setRound,
-    setWin
+    setWin,
   } = useContext(GameContext);
 
   const firstRow = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -32,6 +32,10 @@ const Keyboard = () => {
 
   const handleReturn = (event) => {
     event.preventDefault();
+
+    if (currentAttempt === todaysWord) {
+      setWin(true);
+    }
 
     if (round > 4) {
       console.log("Game is over");
@@ -91,7 +95,9 @@ const Keyboard = () => {
         ))}
       </div>
       <div className={styles.keyboard_row}>
-        <div className={styles.keyboard_letter} onClick={handleBackspace}>&#x232B;</div>
+        <div className={styles.keyboard_letter} onClick={handleBackspace}>
+          &#x232B;
+        </div>
         {thirdRow.map((letter) => (
           <div
             key={letter}
