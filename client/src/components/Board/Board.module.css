@@ -4,7 +4,10 @@
   justify-content: center;
 }
 
-.letter {
+.letter,
+.incorrect,
+.correct,
+.almost {
   width: 55px;
   height: 60px;
   line-height: 60px;
@@ -14,4 +17,8 @@
   font-size: 3em;
   text-align: center;
   text-transform: uppercase;
+}
+
+.incorrect {
+  background-color: #303535;
 }
