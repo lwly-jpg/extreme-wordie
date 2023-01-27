@@ -9,7 +9,7 @@ const Keyboard = () => {
     setAttempts,
     round,
     setRound,
-    todaysWord,
+    todaysWord
   } = useContext(GameContext);
 
   const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
@@ -31,6 +31,7 @@ const Keyboard = () => {
 
   const handleReturn = (event) => {
     event.preventDefault();
+
     if (round > 4) {
       console.log("Game is over");
       return;

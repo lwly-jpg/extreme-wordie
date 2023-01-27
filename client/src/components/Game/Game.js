@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import styles from "./Game.module.css";
 import Board from "../Board/Board";
 import Keyboard from "../Keyboard/Keyboard";
@@ -12,6 +12,12 @@ const Game = ({todaysWord}) => {
   const [round, setRound] = useState(0);
   const [modal, setModal] = useState(false);
 
+  useEffect(() => {
+    if (round > 4) {
+      setModal(true);
+    }
+  }, [round])
+
   return (
     <div className={styles.container}>
       <GameContext.Provider
@@ -22,8 +28,7 @@ const Game = ({todaysWord}) => {
           setCurrentAttempt,
           setAttempts,
           setRound,
-          todaysWord,
-          setModal
+          todaysWord
         }}
       >
         <Board />
