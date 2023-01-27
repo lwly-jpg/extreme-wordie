@@ -14,12 +14,11 @@ const Row = ({ attempt, currentAttempt }) => {
 
   if (currentAttempt) {
     const tiles = currentAttempt.split("")
-    console.log(tiles)
 
     return (
       <div className={styles.row}>
         {tiles.map((tile, index) => (
-          <div key={index} className={styles.letter}>{tile.letter}</div>
+          <div key={index} className={styles.letter}>{tile}</div>
         ))}
         {[...Array(6 - currentAttempt.length)].map((_, index) => (
           <div key={index} className={styles.letter}></div>
