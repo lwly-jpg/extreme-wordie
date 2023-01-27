@@ -1,4 +1,3 @@
-import styles from "./Board.module.css";
 import { useContext } from "react";
 import { GameContext } from "../Game/Game";
 import Row from "./Row";

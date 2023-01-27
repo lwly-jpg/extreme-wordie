@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import styles from "./Game.module.css";
 import Board from "../Board/Board";
 import Keyboard from "../Keyboard/Keyboard";
 
@@ -10,7 +11,7 @@ const Game = ({todaysWord}) => {
   const [round, setRound] = useState(0);
 
   return (
-    <>
+    <div className={styles.container}>
       <GameContext.Provider
         value={{
           attempts,
@@ -25,7 +26,7 @@ const Game = ({todaysWord}) => {
         <Board />
         <Keyboard />
       </GameContext.Provider>
-    </>
+    </div>
   );
 };
 

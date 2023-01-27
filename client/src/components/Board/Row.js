@@ -1,4 +1,4 @@
-import styles from "./Board.module.css";
+import styles from "./Row.module.css";
 
 const Row = ({ attempt, currentAttempt }) => {
   if (attempt) {
