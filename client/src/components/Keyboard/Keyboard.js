@@ -4,17 +4,18 @@ import { GameContext } from "../Game/Game";
 
 const Keyboard = () => {
   const {
+    todaysWord,
     currentAttempt,
+    round,
     setCurrentAttempt,
     setAttempts,
-    round,
     setRound,
-    todaysWord
+    setWin
   } = useContext(GameContext);
 
-  const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-  const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-  const thirdRow = ["Z", "X", "C", "V", "B", "N", "M"];
+  const firstRow = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
+  const secondRow = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
+  const thirdRow = ["z", "x", "c", "v", "b", "n", "m"];
 
   const handleKeyClick = (letter) => {
     if (currentAttempt.length === 6) {
@@ -47,7 +48,7 @@ const Keyboard = () => {
       const formattedAttempt = [...currentAttempt].map((letter, index) => {
         if (letter.toLowerCase() === todaysWord[index]) {
           return { letter: letter, result: "correct" };
-        } else if ([...todaysWord].includes(letter.toLowerCase())) {
+        } else if ([...todaysWord].includes(letter)) {
           return { letter: letter, result: "almost" };
         } else {
           return { letter: letter, result: "incorrect" };

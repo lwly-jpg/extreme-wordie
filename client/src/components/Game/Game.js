@@ -11,9 +11,14 @@ const Game = ({todaysWord}) => {
   const [currentAttempt, setCurrentAttempt] = useState("");
   const [round, setRound] = useState(0);
   const [modal, setModal] = useState(false);
+  const [win, setWin] = useState(false);
 
   useEffect(() => {
     if (round > 4) {
+      setModal(true);
+    }
+
+    if (win) {
       setModal(true);
     }
   }, [round])
@@ -22,13 +27,14 @@ const Game = ({todaysWord}) => {
     <div className={styles.container}>
       <GameContext.Provider
         value={{
+          todaysWord,
           attempts,
           currentAttempt,
           round,
           setCurrentAttempt,
           setAttempts,
           setRound,
-          todaysWord
+          setWin
         }}
       >
         <Board />
