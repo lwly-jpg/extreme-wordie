@@ -16,12 +16,14 @@ Rather than having 6 attempts to guess a 5 letter word, with Extreme Wordle you 
 In my first iteration of Extreme Wordie, users can:
 - Attempt to guess "today's word", which is a different word each day
 - See feedback on the game's board and keyboard based on if a letter in their attempt is:
-  - "correct" (letter is in the word and in the right position)
-  - "almost" correct (letter is in the word but in the wrong position)
-  - "incorrect" (letter is not in the word)
+  - **"correct"**: letter is in the word and in the right position
+  - **"almost" correct**: letter is in the word but in the wrong position
+  - **"incorrect"**: letter is not in the word
 - See a prompt at the end of the game if they were successful / unsuccessful
 
 ## V1 Screenshots
 <img src="./screenshots/extreme-wordie-start.png" width="500" alt="Extreme Wordie start">
+<div>
 <img src="./screenshots/extreme-wordie-guess.png" width="250" alt="Extreme Wordie attempting">
 <img src="./screenshots/extreme-wordie-end.png" width="250" alt="Extreme Wordie end">
+</div>
