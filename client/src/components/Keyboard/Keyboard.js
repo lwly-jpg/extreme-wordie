@@ -1,5 +1,5 @@
 import styles from "./Keyboard.module.css";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { GameContext } from "../Game/Game";
 
 const Keyboard = () => {
@@ -7,6 +7,8 @@ const Keyboard = () => {
     todaysWord,
     currentAttempt,
     round,
+    usedLetters,
+    setUsedLetters,
     setCurrentAttempt,
     setAttempts,
     setRound,
@@ -50,7 +52,8 @@ const Keyboard = () => {
       let newAttempts = [...prevAttempts];
 
       const formattedAttempt = [...currentAttempt].map((letter, index) => {
-        if (letter.toLowerCase() === todaysWord[index]) {
+        if (letter === todaysWord[index]) {
+          setUsedLetters({...usedLetters, [letter]: "correct" })
           return { letter: letter, result: "correct" };
         } else if ([...todaysWord].includes(letter)) {
           return { letter: letter, result: "almost" };
@@ -76,7 +79,7 @@ const Keyboard = () => {
         {firstRow.map((letter) => (
           <div
             key={letter}
-            className={styles.keyboard_letter}
+            className={styles[usedLetters[letter]] || styles.keyboard_letter}
             onClick={() => handleKeyClick(letter)}
           >
             {letter}

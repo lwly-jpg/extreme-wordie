@@ -13,7 +13,8 @@
   height: 3em;
 }
 
-.keyboard_letter {
+.keyboard_letter,
+.correct {
   flex-grow: 1;
   display: grid;
   place-items: center;
@@ -28,6 +29,18 @@
   background-color: #555b86;
   color: #ede8e8;
   cursor: pointer;
+}
+
+.incorrect {
+  background-color: #303535;
+}
+
+.almost {
+  background-color: #cf8a00;
+}
+
+.correct {
+  background-color: #066d3f;
 }
 
 @media (min-width: 480px) {
