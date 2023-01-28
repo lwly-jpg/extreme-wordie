@@ -12,6 +12,7 @@ const Game = ({todaysWord}) => {
   const [round, setRound] = useState(0);
   const [modal, setModal] = useState(false);
   const [win, setWin] = useState(false);
+  const [usedLetters, setUsedLetters] = useState({});
 
   useEffect(() => {
     if (round > 4) {
@@ -31,6 +32,8 @@ const Game = ({todaysWord}) => {
           attempts,
           currentAttempt,
           round,
+          usedLetters,
+          setUsedLetters,
           setCurrentAttempt,
           setAttempts,
           setRound,

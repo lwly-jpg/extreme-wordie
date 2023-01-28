@@ -1,74 +1,15 @@
 import styles from "./Keyboard.module.css";
 import { useContext } from "react";
 import { GameContext } from "../Game/Game";
+import useKeyboard from "../../hooks/useKeyboard";
 
 const Keyboard = () => {
-  const {
-    todaysWord,
-    currentAttempt,
-    round,
-    setCurrentAttempt,
-    setAttempts,
-    setRound,
-    setWin,
-  } = useContext(GameContext);
+  const { usedLetters } = useContext(GameContext);
+  const { handleKeyClick, handleBackspace, handleReturn } = useKeyboard();
 
   const firstRow = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
   const secondRow = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
   const thirdRow = ["z", "x", "c", "v", "b", "n", "m"];
-
-  const handleKeyClick = (letter) => {
-    if (currentAttempt.length === 6) {
-      return;
-    }
-    setCurrentAttempt((prev) => prev + letter);
-  };
-
-  const handleBackspace = (event) => {
-    event.preventDefault();
-
-    setCurrentAttempt((prev) => prev.slice(0, -1));
-  };
-
-  const handleReturn = (event) => {
-    event.preventDefault();
-
-    if (currentAttempt === todaysWord) {
-      setWin(true);
-    }
-
-    if (round > 4) {
-      console.log("Game is over");
-      return;
-    }
-
-    if (currentAttempt.length !== 6) {
-      return;
-    }
-
-    setAttempts((prevAttempts) => {
-      let newAttempts = [...prevAttempts];
-
-      const formattedAttempt = [...currentAttempt].map((letter, index) => {
-        if (letter.toLowerCase() === todaysWord[index]) {
-          return { letter: letter, result: "correct" };
-        } else if ([...todaysWord].includes(letter)) {
-          return { letter: letter, result: "almost" };
-        } else {
-          return { letter: letter, result: "incorrect" };
-        }
-      });
-
-      newAttempts[round] = formattedAttempt;
-      return newAttempts;
-    });
-
-    setCurrentAttempt("");
-
-    setRound((prevRound) => {
-      return prevRound + 1;
-    });
-  };
 
   return (
     <div className={styles.keyboard}>
@@ -76,7 +17,7 @@ const Keyboard = () => {
         {firstRow.map((letter) => (
           <div
             key={letter}
-            className={styles.keyboard_letter}
+            className={styles[usedLetters[letter]] || styles.keyboard_letter}
             onClick={() => handleKeyClick(letter)}
           >
             {letter}
@@ -87,7 +28,7 @@ const Keyboard = () => {
         {secondRow.map((letter) => (
           <div
             key={letter}
-            className={styles.keyboard_letter}
+            className={styles[usedLetters[letter]] || styles.keyboard_letter}
             onClick={() => handleKeyClick(letter)}
           >
             {letter}
@@ -101,7 +42,7 @@ const Keyboard = () => {
         {thirdRow.map((letter) => (
           <div
             key={letter}
-            className={styles.keyboard_letter}
+            className={styles[usedLetters[letter]] || styles.keyboard_letter}
             onClick={() => handleKeyClick(letter)}
           >
             {letter}

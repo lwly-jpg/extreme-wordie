@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Game todaysWord={todaysWord} />
+      {todaysWord && <Game todaysWord={todaysWord} />}
     </div>
   );
 }
