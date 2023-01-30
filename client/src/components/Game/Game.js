@@ -6,13 +6,20 @@ import Modal from "../Modal/Modal"
 
 export const GameContext = createContext();
 
-const Game = ({todaysWord}) => {
+const Game = () => {
   const [attempts, setAttempts] = useState([...Array(5)].fill([...Array(6)].fill({letter: "", result: null})));
   const [currentAttempt, setCurrentAttempt] = useState("");
   const [round, setRound] = useState(0);
   const [modal, setModal] = useState(false);
   const [win, setWin] = useState(false);
   const [usedLetters, setUsedLetters] = useState({});
+  const [todaysWord, setTodaysWord] = useState();
+
+  useEffect(() => {
+    fetch("https://extreme-wordie.onrender.com/words/today")
+      .then((response) => response.json())
+      .then((data) => setTodaysWord(data.word));
+  }, []);
 
   useEffect(() => {
     if (round > 4) {
