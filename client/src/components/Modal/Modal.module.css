@@ -12,6 +12,9 @@
 }
 
 .popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 60%;
   width: 60%;
   padding: 10%;
@@ -22,11 +25,13 @@
 .win {
   color: #066d3f;
   font-size: 3em;
+  margin: 0px;
 }
 
 .loss {
   color: #cf8a00;
   font-size: 3em;
+  margin: 0px;
 }
 
 .answer {
@@ -43,3 +48,11 @@
   font-size: 2em;
 }
 
+.share_button {
+  border-radius: 5px;
+  width: 9em;
+  height: 3em;
+  line-height: 3em;
+  font-size: 20px;
+  background-color: #066d3f;
+}
