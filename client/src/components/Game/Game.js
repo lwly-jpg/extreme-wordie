@@ -49,7 +49,9 @@ const Game = () => {
       >
         <Board />
         <Keyboard />
-        {modal && <Modal win={win} word={todaysWord} round={round} />}
+        <Modal win={win} word={todaysWord} round={round} />
+
+        {/* {modal && <Modal win={win} word={todaysWord} round={round} />} */}
       </GameContext.Provider>
     </div>
   );

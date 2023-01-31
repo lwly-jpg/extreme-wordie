@@ -8,12 +8,14 @@ const Modal = ({ win, word, round }) => {
           <h1 className={style.win}>You won!</h1>
           <h2 className={style.answer}>Word: <span className={style.word}>{word}</span></h2>
           <p className={style.text}>You got it in {round} / 5 attempts!</p>
+          <div className={style.share_button}>Share Result</div>
         </div>
       ) : (
         <div className={style.popup}>
           <h1 className={style.loss}>Next time!</h1>
           <h2 className={style.answer}>Word: <span className={style.word}>{word}</span></h2>
           <p className={style.text}>You used up all 5 attempts!</p>
+          <div className={style.share_button}>Share Result</div>
         </div>
       )}
     </div>
